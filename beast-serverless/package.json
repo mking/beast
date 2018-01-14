@@ -9,9 +9,6 @@
   },
   "devDependencies": {
     "@serverless-chrome/lambda": "^1.0.0-34",
-    "serverless": "^1.25.0",
-    "serverless-webpack": "^4.2.0",
-    "webpack": "^3.10.0",
-    "webpack-node-externals": "^1.6.0"
+    "serverless": "^1.25.0"
   }
 }
