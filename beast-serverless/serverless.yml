@@ -1,0 +1,14 @@
+service: beast
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: us-west-2
+
+plugins:
+  - serverless-plugin-chrome
+
+functions:
+  takeScreenshot:
+    handler: takeScreenshot.default

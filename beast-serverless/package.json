@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "dependencies": {
+    "node-fetch": "^1.7.3",
+    "puppeteer": "^1.0.0"
+  },
+  "devDependencies": {
+    "serverless": "^1.25.0",
+    "serverless-plugin-chrome": "^1.0.0-34"
+  }
+}

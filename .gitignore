@@ -1,6 +1,8 @@
 .DS_Store
+.build
+.serverless
 .vscode
 google.png
 keys
-headless-chromium
+headless-chromium*
 node_modules
