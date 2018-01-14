@@ -39,6 +39,8 @@ ANALYZE_BUNDLE=true ./node_modules/.bin/serverless package
 why is this package included?
 npm ls --prod
 
+cannot use tar because yallist has a weird require that screws up rollup.
+
 ./node_modules/.bin/serverless deploy
 ./node_modules/.bin/serverless remove
 ./node_modules/.bin/serverless invoke -f takeScreenshot -l

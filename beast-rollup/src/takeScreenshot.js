@@ -1,7 +1,7 @@
 import AWS from 'aws-sdk';
+import decompress from 'decompress';
 import fs from 'fs';
 import pify from 'pify';
-import tar from 'tar';
 
 const s3 = new AWS.S3();
 
@@ -23,10 +23,7 @@ function downloadChrome() {
           return pify(fs.writeFile)(data.Body);
         })
         .then(() => {
-          return tar.x({
-            file: '/tmp/headless-chromium.tar.gz',
-            cwd: '/tmp'
-          });
+          return decompress('/tmp/headless-chromium.tar.gz', '/tmp');
         });
     }
     return Promise.resolve();
