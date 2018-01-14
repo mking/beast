@@ -5,6 +5,7 @@
 - [Installing node v6 on the lambda AMI](https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
 - [Determine which chrome version to use with puppeteer](https://github.com/GoogleChrome/puppeteer/issues/1507)
 - [Bug specifying chrome channel](https://github.com/adieuadieu/serverless-chrome/issues/100)
+- [Webpack for node](http://jlongster.com/Backend-Apps-with-Webpack--Part-I)
 
 ```
 beast-serverless
