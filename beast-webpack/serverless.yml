@@ -1,4 +1,4 @@
-service: beast
+service: webpack
 
 provider:
   name: aws

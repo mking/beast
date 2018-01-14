@@ -6,15 +6,21 @@
 - [Determine which chrome version to use with puppeteer](https://github.com/GoogleChrome/puppeteer/issues/1507)
 - [Bug specifying chrome channel](https://github.com/adieuadieu/serverless-chrome/issues/100)
 - [Webpack for node](http://jlongster.com/Backend-Apps-with-Webpack--Part-I)
+- [Example package with rollup)[https://github.com/adieuadieu/serverless-chrome/tree/master/packages/lambda]
 
 ```
+beast-rollup
+yarn clean && yarn build && ./node_modules/.bin/serverless deploy && ./node_modules/.bin/serverless invoke -f takeScreenshot -l
+yarn clean
+yarn build
+
 beast-serverless
 PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true NPM_CONFIG_SERVERLESS_CHROME_SKIP_DOWNLOAD=true yarn
 ./node_modules/.bin/serverless package
 du -h .serverless/beast.zip
 2.6M	.serverless/beast.zip
 
-beast-serverless-webpack
+beast-webpack
 PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true NPM_CONFIG_SERVERLESS_CHROME_SKIP_DOWNLOAD=true ./node_modules/.bin/serverless package
 without uglify:
 $ du -h .serverless/beast.zip 

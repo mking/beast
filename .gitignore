@@ -3,6 +3,7 @@
 .serverless
 .vscode
 .webpack
+dist
 google.png
 keys
 headless-chromium*

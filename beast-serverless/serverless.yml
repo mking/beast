@@ -1,4 +1,4 @@
-service: beast
+service: serverless
 
 provider:
   name: aws

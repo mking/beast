@@ -1,0 +1,15 @@
+service: rollup
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: us-west-2
+
+package:
+  include:
+    - dist/takeScreenshot.js
+
+functions:
+  takeScreenshot:
+    handler: dist/takeScreenshot.handler
