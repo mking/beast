@@ -7,13 +7,10 @@
 - [Bug specifying chrome channel](https://github.com/adieuadieu/serverless-chrome/issues/100)
 
 ```
-# Don't bundle chrome
-yarn remove serverless-plugin-chrome && NPM_CONFIG_SERVERLESS_CHROME_SKIP_DOWNLOAD=true yarn add --dev serverless-plugin-chrome
-
-# Update chrome version
-yarn remove serverless-plugin-chrome && NPM_CONFIG_CHROMIUM_CHANNEL=dev yarn add --dev serverless-plugin-chrome
+PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true NPM_CONFIG_SERVERLESS_CHROME_SKIP_DOWNLOAD=true yarn
 
 ./node_modules/.bin/serverless deploy
 ./node_modules/.bin/serverless remove
 ./node_modules/.bin/serverless invoke -f hello -l
+./node_modules/.bin/serverless package
 ```

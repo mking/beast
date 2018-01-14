@@ -2,6 +2,7 @@
 .build
 .serverless
 .vscode
+.webpack
 google.png
 keys
 headless-chromium*

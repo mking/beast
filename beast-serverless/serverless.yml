@@ -7,7 +7,16 @@ provider:
   region: us-west-2
 
 plugins:
-  - serverless-plugin-chrome
+  - serverless-webpack
+
+custom:
+  webpackIncludeModules:
+    forceExclude:
+      - aws-sdk
+
+package:
+  exclude:
+    - node_modules/puppeteer/.local-chromium/**
 
 functions:
   takeScreenshot:
