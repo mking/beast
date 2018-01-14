@@ -1,25 +1,23 @@
 import babel from 'rollup-plugin-babel';
+import builtinModules from 'builtin-modules';
+import commonjs from 'rollup-plugin-commonjs';
+import json from 'rollup-plugin-json';
 import resolve from 'rollup-plugin-node-resolve';
 
 export default {
   input: 'src/takeScreenshot.js',
   output: [{ file: 'dist/takeScreenshot.js', format: 'cjs' }],
   plugins: [
-    resolve(),
+    json(),
+    resolve({
+      preferBuiltins: true
+    }),
+    commonjs(),
     babel({
       babelrc: false,
-      presets: [
-        [
-          'env',
-          {
-            modules: false,
-            targets: {
-              node: '6.10'
-            }
-          }
-        ]
-      ]
+      presets: [['env', { modules: false }]],
+      exclude: ['node_modules/**']
     })
   ],
-  external: ['fs', 'child_process', 'net', 'http', 'path', 'aws-sdk']
+  external: [...builtinModules, 'aws-sdk']
 };

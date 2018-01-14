@@ -6,13 +6,15 @@
 - [Determine which chrome version to use with puppeteer](https://github.com/GoogleChrome/puppeteer/issues/1507)
 - [Bug specifying chrome channel](https://github.com/adieuadieu/serverless-chrome/issues/100)
 - [Webpack for node](http://jlongster.com/Backend-Apps-with-Webpack--Part-I)
-- [Example package with rollup)[https://github.com/adieuadieu/serverless-chrome/tree/master/packages/lambda]
+- [Example package with rollup](https://github.com/adieuadieu/serverless-chrome/tree/master/packages/lambda)
+- [Using closure with node](https://github.com/google/closure-compiler/issues/1382)
+- [Closure command line options](https://github.com/google/closure-compiler/blob/635b02b08ecd5e4a1d7d58411232eadebcb24fa3/src/com/google/javascript/jscomp/CommandLineRunner.java)
+- [Closure feature sets](https://github.com/google/closure-compiler/blob/e5c433b507bf919e017db1ab10f6b2e24a40ab7a/src/com/google/javascript/jscomp/parsing/parser/FeatureSet.java)
 
 ```
 beast-rollup
-yarn clean && yarn build && ./node_modules/.bin/serverless deploy && ./node_modules/.bin/serverless invoke -f takeScreenshot -l
-yarn clean
-yarn build
+./node_modules/.bin/serverless deploy && ./node_modules/.bin/serverless invoke -f takeScreenshot -l
+yarn build -w
 
 beast-serverless
 PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true NPM_CONFIG_SERVERLESS_CHROME_SKIP_DOWNLOAD=true yarn

@@ -7,8 +7,9 @@ provider:
   region: us-west-2
 
 package:
-  include:
-    - dist/takeScreenshot.js
+  exclude:
+    - '**'
+    - '!dist/takeScreenshot.js'
 
 functions:
   takeScreenshot:
