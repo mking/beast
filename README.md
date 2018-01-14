@@ -1,0 +1,5 @@
+- [Lambda node/AMI version](https://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html)
+- [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+- [Puppeteer on lambda](https://github.com/sambaiz/puppeteer-lambda-starter-kit)
+- [Chrome for lambda releases](https://github.com/adieuadieu/serverless-chrome/releases)
+- [Installing node v6 on the lambda AMI](https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)

@@ -1,0 +1,6 @@
+.DS_Store
+.vscode
+google.png
+keys
+headless-chromium
+node_modules
