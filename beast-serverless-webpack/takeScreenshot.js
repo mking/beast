@@ -9,6 +9,8 @@ import puppeteer from 'puppeteer';
 
 const s3 = new AWS.S3();
 
+async function foo() {}
+
 function downloadChrome() {
   return new Promise(resolve => {
     fs.access('/tmp/headless-chromium', error => {
