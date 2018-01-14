@@ -12,6 +12,18 @@
 - [Closure feature sets](https://github.com/google/closure-compiler/blob/e5c433b507bf919e017db1ab10f6b2e24a40ab7a/src/com/google/javascript/jscomp/parsing/parser/FeatureSet.java)
 
 ```
+which packages are taking up the most space?
+ANALYZE_BUNDLE=true ./node_modules/.bin/serverless package
+
+why is this package included?
+npm ls --prod
+
+./node_modules/.bin/serverless deploy && ./node_modules/.bin/serverless invoke -f takeScreenshot -l
+./node_modules/.bin/serverless deploy
+./node_modules/.bin/serverless remove
+./node_modules/.bin/serverless invoke -f takeScreenshot -l
+./node_modules/.bin/serverless package
+
 beast-rollup
 ./node_modules/.bin/serverless deploy && ./node_modules/.bin/serverless invoke -f takeScreenshot -l
 yarn build -w
@@ -33,16 +45,5 @@ $ du -h .serverless/beast.zip
 
 webpack-node-externals? Only if we're including node_modules.
 
-which packages are taking up the most space?
-ANALYZE_BUNDLE=true ./node_modules/.bin/serverless package
-
-why is this package included?
-npm ls --prod
-
 cannot use tar because yallist has a weird require that screws up rollup.
-
-./node_modules/.bin/serverless deploy
-./node_modules/.bin/serverless remove
-./node_modules/.bin/serverless invoke -f takeScreenshot -l
-./node_modules/.bin/serverless package
 ```

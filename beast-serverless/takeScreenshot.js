@@ -1,11 +1,11 @@
-import AWS from 'aws-sdk';
-import decompress from 'decompress';
-import fetch from 'node-fetch';
-import fs from 'fs';
-import pify from 'pify';
-import launchChrome from '@serverless-chrome/lambda';
-import path from 'path';
-import puppeteer from 'puppeteer';
+const AWS = require('aws-sdk');
+const fetch = require('node-fetch');
+const fs = require('fs');
+const pify = require('pify');
+const launchChrome = require('@serverless-chrome/lambda');
+const path = require('path');
+const puppeteer = require('puppeteer');
+const tar = require('tar');
 
 const s3 = new AWS.S3();
 
@@ -27,7 +27,7 @@ function downloadChrome() {
           return pify(fs.writeFile)(data.Body);
         })
         .then(() => {
-          return decompress('/tmp/headless-chromium.tar.gz', '/tmp');
+          return tar.x({ file: '/tmp/headless-chromium.tar.gz', cwd: '/tmp' });
         });
     }
     return Promise.resolve();
@@ -77,7 +77,7 @@ function testBrowser(browser) {
     .then(() => browser.close());
 }
 
-export default function handler(event, context, callback) {
+exports.handler = function(event, context, callback) {
   console.log('Starting lambda...');
   downloadChrome()
     .then(() => connectBrowser())
@@ -86,4 +86,4 @@ export default function handler(event, context, callback) {
       console.log('Exiting lambda...');
       callback();
     });
-}
+};

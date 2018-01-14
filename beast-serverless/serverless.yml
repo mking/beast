@@ -10,7 +10,8 @@ package:
   exclude:
     - node_modules/aws-sdk/**
     - node_modules/puppeteer/.local-chromium/**
+    - node_modules/puppeteer/lib/**
 
 functions:
   takeScreenshot:
-    handler: takeScreenshot.default
+    handler: takeScreenshot.handler

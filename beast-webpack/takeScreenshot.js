@@ -1,15 +1,13 @@
 import AWS from 'aws-sdk';
-import decompress from 'decompress';
 import fetch from 'node-fetch';
 import fs from 'fs';
 import pify from 'pify';
 import launchChrome from '@serverless-chrome/lambda';
 import path from 'path';
 import puppeteer from 'puppeteer';
+import tar from 'tar';
 
 const s3 = new AWS.S3();
-
-async function foo() {}
 
 function downloadChrome() {
   return new Promise(resolve => {
@@ -29,7 +27,7 @@ function downloadChrome() {
           return pify(fs.writeFile)(data.Body);
         })
         .then(() => {
-          return decompress('/tmp/headless-chromium.tar.gz', '/tmp');
+          return tar.x({ file: '/tmp/headless-chromium.tar.gz', cwd: '/tmp' });
         });
     }
     return Promise.resolve();

@@ -16,6 +16,10 @@ module.exports = {
           path.resolve(__dirname, 'node_modules/puppeteer')
         ],
         use: [{ loader: 'babel-loader' }]
+      },
+      {
+        test: /\.json$/,
+        use: [{ loader: 'json-loader' }]
       }
     ]
   },
@@ -25,7 +29,8 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
-    new UglifyJsPlugin(),
+    new webpack.IgnorePlugin(/^\.\/lib\/Puppeteer$/, /puppeteer$/),
+    // new UglifyJsPlugin(),
     new DuplicatePackageCheckerPlugin({ verbose: true }),
     ...(process.env.ANALYZE_BUNDLE === 'true'
       ? [new BundleAnalyzerPlugin()]
