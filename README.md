@@ -12,17 +12,17 @@
 - [Closure feature sets](https://github.com/google/closure-compiler/blob/e5c433b507bf919e017db1ab10f6b2e24a40ab7a/src/com/google/javascript/jscomp/parsing/parser/FeatureSet.java)
 
 ```
-which packages are taking up the most space?
-ANALYZE_BUNDLE=true ./node_modules/.bin/serverless package
-
-why is this package included?
-npm ls --prod
-
 ./node_modules/.bin/serverless deploy && ./node_modules/.bin/serverless invoke -f takeScreenshot -l
 ./node_modules/.bin/serverless deploy
 ./node_modules/.bin/serverless remove
 ./node_modules/.bin/serverless invoke -f takeScreenshot -l
 ./node_modules/.bin/serverless package
+
+which packages are taking up the most space?
+ANALYZE_BUNDLE=true ./node_modules/.bin/serverless package
+
+why is this package included?
+npm ls --prod
 
 beast-rollup
 ./node_modules/.bin/serverless deploy && ./node_modules/.bin/serverless invoke -f takeScreenshot -l
