@@ -84,18 +84,9 @@ function testBrowser(browser) {
   return browser
     .newPage()
     .then(page => {
-      console.log('Going to google...');
+      console.log('Going to the address...');
       return page
-        .goto('https://www.google.com')
-        .then(() => page.waitFor('input[name="q"]'))
-        .then(query => {
-          console.log('Entering search query...');
-          return query.type('test').then(() => query.press('Enter'));
-        })
-        .then(() => {
-          console.log('Waiting for search results...');
-          return page.waitForNavigation();
-        })
+        .goto('https://news.ycombinator.com')
         .then(() => {
           console.log('Taking screenshot...');
           return page.screenshot();

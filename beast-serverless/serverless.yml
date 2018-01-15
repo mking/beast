@@ -5,6 +5,12 @@ provider:
   runtime: nodejs6.10
   stage: dev
   region: us-west-2
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:PutObjectAcl
+      Resource: arn:aws:s3:::beast-lambda/*
 
 package:
   exclude:
