@@ -5,6 +5,8 @@ provider:
   runtime: nodejs6.10
   stage: dev
   region: us-west-2
+  environment:
+    DEBUG: '*'
   iamRoleStatements:
     - Effect: Allow
       Action:
