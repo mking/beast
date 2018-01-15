@@ -5,7 +5,6 @@ provider:
   runtime: nodejs6.10
   stage: dev
   region: us-west-2
-  timeout: 60
 
 package:
   exclude:
@@ -16,3 +15,4 @@ package:
 functions:
   takeScreenshot:
     handler: takeScreenshot.handler
+    timeout: 60

@@ -16,6 +16,7 @@
 ./node_modules/.bin/serverless deploy
 ./node_modules/.bin/serverless remove
 ./node_modules/.bin/serverless invoke -f takeScreenshot -l
+./node_modules/.bin/serverless invoke local -f takeScreenshot -l
 ./node_modules/.bin/serverless package
 
 which packages are taking up the most space?

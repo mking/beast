@@ -1,4 +1,5 @@
 const AWS = require('aws-sdk');
+const assign = require('object-assign');
 const fetch = require('node-fetch');
 const fs = require('fs');
 const pify = require('pify');
@@ -7,7 +8,14 @@ const path = require('path');
 const puppeteer = require('puppeteer');
 const tar = require('tar');
 
-function downloadChrome() {
+const CHROME_TMP = '/tmp';
+const CHROME_KEY = 'headless-chromium.tar.gz';
+
+function downloadBrowser() {
+  if (process.env.IS_LOCAL === 'true') {
+    return Promise.resolve();
+  }
+
   console.log('Downloading chrome...');
   const s3 = new AWS.S3();
   return s3
@@ -17,20 +25,32 @@ function downloadChrome() {
     })
     .promise()
     .then(data => {
-      return pify(fs.writeFile)('/tmp/headless-chromium.tar.gz', data.Body);
+      return pify(fs.writeFile)(path.join(CHROME_TMP, CHROME_KEY), data.Body);
     })
     .then(() => {
-      return tar.x({ file: '/tmp/headless-chromium.tar.gz', cwd: '/tmp' });
+      return tar.x({
+        file: path.join(CHROME_TMP, 'headless-chromium.tar.gz'),
+        cwd: CHROME_TMP
+      });
     })
-    .then(() => {
-      console.log('Downloaded chrome');
-      console.log('Starting chrome...');
-      return launchChrome({ chromePath: '/tmp/headless-chromium' });
-    })
-    .then(browser => {
-      console.log('Started chrome');
-      return browser;
-    });
+    .then(() => console.log('Downloaded chrome'));
+}
+
+function startBrowser() {
+  console.log('Starting chrome...');
+  return launchChrome(
+    assign(
+      {},
+      process.env.IS_LOCAL === 'true'
+        ? {}
+        : {
+            chromePath: path.join(CHROME_TMP, 'headless-chromium')
+          }
+    )
+  ).then(browser => {
+    console.log('Started chrome');
+    return browser;
+  });
 }
 
 function connectBrowser() {
@@ -48,7 +68,9 @@ function connectBrowserWithFallback() {
   return connectBrowser()
     .catch(error => {
       if (error.code === 'ECONNREFUSED') {
-        return downloadChrome().then(() => connectBrowser());
+        return downloadBrowser()
+          .then(() => startBrowser())
+          .then(() => connectBrowser());
       }
       throw error;
     })
@@ -85,7 +107,8 @@ function testBrowser(browser) {
               Bucket: 'beast-lambda',
               Key: 'screenshot.png',
               Body: buffer,
-              ACL: 'public-read'
+              ACL: 'public-read',
+              ContentType: 'image/png'
             })
             .promise();
         });
