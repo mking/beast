@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "expect": "^22.0.6",
+    "node-fetch": "^1.7.3",
+    "pify": "^3.0.0",
+    "prompt": "^1.0.0",
+    "puppeteer": "^1.0.0"
+  }
+}

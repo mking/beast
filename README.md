@@ -12,6 +12,9 @@
 - [Closure feature sets](https://github.com/google/closure-compiler/blob/e5c433b507bf919e017db1ab10f6b2e24a40ab7a/src/com/google/javascript/jscomp/parsing/parser/FeatureSet.java)
 
 ```
+node src/startBrowser.js
+node src/connectBrowser.js
+
 ./node_modules/.bin/serverless deploy && ./node_modules/.bin/serverless invoke -f takeScreenshot -l
 ./node_modules/.bin/serverless deploy
 ./node_modules/.bin/serverless remove
