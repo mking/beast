@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "dependencies": {
+    "expect": "^22.0.6",
+    "pify": "^3.0.0",
+    "pixelmatch": "^4.0.2",
+    "pngjs": "^3.3.1",
+    "puppeteer": "^1.0.0"
+  }
+}

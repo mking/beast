@@ -1,11 +1,11 @@
 *.log
+*.png
 .DS_Store
 .build
 .serverless
 .vscode
 .webpack
 dist
-google.png
 keys
 headless-chromium*
 node_modules
